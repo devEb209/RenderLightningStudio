@@ -1,27 +1,13 @@
-[General]
-Display Name=<DisplayName>
-Description=<Description>
-GUID={A9CECA24-9F31-11d2-912E-006094EB630B}
-Path="fxsext32.dll"
-Entry Point=1
-Client Version=4.0
-Misc Flags=NoOptimizeInterfaceMap;NoUserEdit
+﻿const express = require("express");
 
-[Exchange Client Compatibility]
-Exchange Registry=1
-Exchange Extension Key="FaxExtension"
+const app = express();
 
-; Exchange Context Map is SENDNOTEMESSAGE
-Exchange Context Map=00000100000000
+app.get("/", (req, res) => {
+    res.send("Backend Online 🚀");
+});
 
-; Exchange Interface Map is unknown (please specify)
-Exchange Interface Map=1111111
+const PORT = process.env.PORT || 3000;
 
-[Item]
-Message Class=IPM.Note
-Item States=Compose
-Events=Install;OnItemChange;OnCheckNames;OnCheckNamesComplete;OnRead;OnReadComplete;OnWrite;OnWriteComplete;OnSubmit;OnSubmitComplete;OnCommand;AllCommands;OnMenuDropDown;InstallCommands
-
-[Strings]
-DisplayName=Fax Server Extension
-Description=Fax Server Extension
+app.listen(PORT, () => {
+    console.log("Rodando na porta " + PORT);
+});
